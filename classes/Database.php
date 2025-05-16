@@ -7,13 +7,23 @@ class Database {
     private $type = "mssqlnative";
     private $charset = "UTF-8";
 
+    // Статическое свойство для хранения единственного соединения
+    private static $connection = null;
+
     public function __construct() {
         sqlsrv_configure('CharacterSet', 'UTF-8');
     }
-    
+
     public function dbConnection($uid = null, $pwd = null) {
+        // Обновляем учетные данные, если они предоставлены
         $this->updateCredentials($uid, $pwd);
-        return $this->sqlsrvConnection();
+
+        // Проверяем, существует ли уже соединение
+        if (self::$connection === null) {
+            self::$connection = $this->sqlsrvConnection();
+        }
+
+        return self::$connection;
     }
 
     public function gridConnection($uid = null, $pwd = null) {
@@ -46,10 +56,10 @@ class Database {
             "TrustServerCertificate" => "yes",
             "CharacterSet" => $this->charset
         ];
+
         $conn = sqlsrv_connect($this->host, $connInfo);
 
         if ($conn === false) {
-            //error_log("SQLSRV Connection failed: " . print_r(sqlsrv_errors(), true) . PHP_EOL, 3, "Database.log");
             throw new Exception(print_r(sqlsrv_errors(), true));
         }
 
