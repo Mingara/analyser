@@ -51,6 +51,14 @@
 	$db_conf = (new Database())->gridConnection($ident, $password);
 	//$grid_conf2 = (new Database())->gridConnection($ident, $password);
 
+	
+	if (!empty($_GET["ident"]))
+	{
+		include_once("classes/GridOut.php");
+		exit;
+	}
+
+
 	// // Get rights of checked User
 	require_once("classes/UserRights.php");
 	new UserRights($conn, $ident);
@@ -92,11 +100,12 @@
 		$arrYears[] = $row["the_year"];
 	}
 
-	if (!empty($_GET["ident"]))
-	{
-		include_once("classes/GridOut.php");
-	}
 
+
+
+
+
+	
 
 	function setArrTabSet($tabNumber, $jsonNewSettings) {
 		global $arrTabs;
