@@ -1,4 +1,4 @@
 git status
 git add .
-git commit -m "проверку GET поднял еще выше, под логином"
+git commit -m "тест"
 git push origin main
