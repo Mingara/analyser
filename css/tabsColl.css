@@ -1,0 +1,91 @@
+/* Tabs container */
+.tabsColl-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* Relative positioning for internal components */
+  overflow: hidden;
+  background-color: #000; /* Чёрный фон для табов */
+  border: 1px solid #ccc; /* Для видимости границ компонента */
+}
+
+/* Tabs list */
+.tabsColl-container #tabsColl-wrapper {
+  flex: 1; /* Табам дается вся оставшаяся ширина */
+  overflow: hidden;
+}
+
+.tabsColl-container #tabsColl {
+  display: flex;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.tabsColl-container #tabsColl ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tabsColl-container #tabsColl ul li {
+  position: relative;
+  height: calc(30px - 2mm); /* Высота div#about (30px) минус паддинги */
+  padding: 1mm 10px; /* Паддинги сверху и снизу 1 мм, слева и справа 10px */
+  background-color: #f1f1f1;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 12px; /* Размер шрифта остается прежним */
+  display: flex;
+  align-items: center; /* Центрирование текста по вертикали */
+}
+
+.tabsColl-container #tabsColl ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.tabsColl-container #tabsColl ul li .close-tab {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  cursor: pointer;
+  color: red;
+}
+
+/* Scroll buttons */
+.tabsColl-container .scroll-btn {
+  background-color: #ddd;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: none;
+}
+
+.tabsColl-container .scroll-btn.left {
+  margin-right: 5px;
+}
+
+.tabsColl-container .scroll-btn.right {
+  margin-left: 5px;
+}
+
+.tabsColl-container .scroll-btn:hover {
+  background-color: #ccc;
+}
+
+/* Title styling */
+.title {
+  background-color: #000; /* Чёрный фон для тителя */
+  color: #FFFF00; /* Жёлтый текст */
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 15px; /* Отступы вокруг текста */
+  text-align: right; /* Выравнивание текста вправо */
+  white-space: nowrap; /* Запрещает перенос текста */
+  position: relative; /* Для предотвращения наложения */
+  z-index: 1; /* Поднимаем над табами */
+}

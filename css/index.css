@@ -1,0 +1,358 @@
+* {
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 1px;
+  border-color: grey;
+/*    font-family: 'Courier New', monospace, Arial, sans-serif; */
+}
+
+/*
+@-moz-document url-prefix() {
+* {
+  border-color: grey;
+}
+}
+*/
+
+html body {
+height: 100%;
+width: 100%;
+min-height: 100%;
+background: #007C7C;
+}
+
+.wrapper {
+display: grid;
+grid-gap: 5px;
+grid-template-columns: 205px 1fr;
+grid-template-rows: 45px 1fr 30px; /* Увеличена высота строки с menu и about */
+grid-template-areas:
+"menu about"
+"outlook content"
+"footer footer";  
+
+/*  grid-template-columns: 100%;
+grid-template-rows: auto 1fr auto;
+*/
+}
+
+.wrapper #menu {
+grid-area: menu;
+width: 210px;
+background: #000;
+height: 45px; /* Увеличена высота до 1.5 раза */
+}
+
+
+.wrapper #outlook {
+grid-area: outlook;
+background: #007C7C;
+/*grid-auto-columns: minmax(400px, auto);*/
+}
+
+.wrapper #content {
+grid-area: content;
+display: grid;
+grid-template-rows: 1fr auto;
+background: #007C7C;
+}
+
+.wrapper #footer {
+grid-area: footer;
+background: #000;
+color: green;
+font-size: 12px;
+text-align: center;
+position: fixed;
+padding: 7px;
+bottom: 0;
+left: 0;
+right: 0;
+}
+
+.wrapper #tabs {
+background: #000;
+color: red;
+padding-bottom: -10;
+}
+
+.wrapper #formGrid {
+background: #007C7C;
+padding-top: 0;
+}
+
+/*
+select {
+background-color: #000;
+}
+
+input[type=date] {
+background-color: #000;
+}
+*/
+
+.radopt1 {
+padding: 5px 0 5px 20px;
+}
+
+.radopt2 {
+padding: 5px 0 5px 30px;
+}
+
+
+.vistaKTS .ktsIn
+{
+  text-align: left;
+  margin-right: -7px;
+}
+
+.btnclose
+{
+  width: 11px;
+  height: 11px;
+  position: relative;
+  top: 0px;
+  right: -5px;
+  float: right;
+}
+
+label, p {
+font-size: 12px;
+}
+
+legend {
+font-weight: bold;
+font-size: 12px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.applybtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #04AA6D;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px;
+  background: #f1e9dc;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 45%;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+#loading {
+  position: relative;
+  left: -22px;
+  top: 3px;
+  visibility: hidden;
+}
+
+.close-tab {
+  float: right;
+  cursor: pointer;
+  background-color: #6495ED;
+  border: none;
+  color: #6495ED;
+  width: 13px;
+  height: 13px;
+  line-height: 10px;
+  text-align: center;
+  padding: 0;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 6px;
+  margin: -3px -3px -3px -3px;
+  margin-left: 50px;
+  transition-duration: 0.4s;
+}
+
+.ui-state-active .close-tab {
+  background-color: #00FFFF;
+  color: white;
+}
+
+.close-tab:hover {
+  background-color: red;
+  color: white;
+}
+
+.ui-tabs .ui-tabs-nav li {
+  position: relative;
+}
+
+.ui-tabs .ui-tabs-nav li .close-tab {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #6495ED;
+}
+
+
+
+
+
+
+
+
+
+/* Основной контейнер about */
+.wrapper #about {
+  grid-area: about;
+  background: #000;
+  color: #FFFF00;
+  font-size: 12px;
+  text-align: right;
+  height: 45px; /* Фиксированная высота */
+  display: flex;
+  align-items: center; /* Центрирование контента по вертикали */
+  padding: 0 15px;
+  box-sizing: border-box;
+  overflow: hidden; /* Предотвращаем выход содержимого */
+}
+
+/* Контейнер для табов и тителя */
+.tabsColl-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Предотвращение выхода табов за пределы */
+}
+
+/* Обертка для табов с ограничением ширины */
+.tabsColl-container #tabsColl-wrapper {
+  flex: 1; /* Занимает всю оставшуюся ширину */
+  overflow-x: auto; /* Горизонтальная прокрутка */
+  display: flex;
+  align-items: center;
+  background-color: #000; /* Чёрный фон */
+}
+
+.tabsColl-container #tabsColl {
+  display: flex;
+  white-space: nowrap; /* Табам запрещено переноситься */
+}
+
+.tabsColl-container #tabsColl ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tabsColl-container #tabsColl ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px; /* Высота таба */
+  padding: 5px 10px;
+  background-color: #f1f1f1;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.tabsColl-container #tabsColl ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.tabsColl-container #tabsColl ul li .close-tab {
+  margin-left: 5px;
+  color: red;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Кнопки прокрутки */
+.tabsColl-container .scroll-btn {
+  background-color: #ddd;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabsColl-container .scroll-btn.left {
+  margin-right: 5px;
+}
+
+.tabsColl-container .scroll-btn.right {
+  margin-left: 5px;
+}
+
+/* Титул */
+.tabsColl-container .title {
+  white-space: nowrap; /* Запрещает перенос текста */
+  margin-left: 10px; /* Отступ слева от табов */
+  color: #FFFF00;
+  font-size: 14px;
+  flex-shrink: 0; /* Не сжимается и остается справа */
+}

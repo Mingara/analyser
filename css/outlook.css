@@ -1,0 +1,25 @@
+.box
+{
+    float:left;
+    width:280px;
+    height:180px;
+    margin:10px;
+    padding:10px;
+    /*margin-top: 25px;*/
+    margin-left: 2px;
+    background: #822680;
+    width: 100%;
+}
+.focus
+{
+    background: #DFF3FF;
+    border:solid 1px #C6E1F2;			
+}
+.clear
+{
+    clear:both;
+}
+#style_select
+{
+    width:100px;	
+}		
