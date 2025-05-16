@@ -1,0 +1,4 @@
+git status
+git add .
+git commit -m "проверку GET поднял еще выше, под логином"
+git push origin main

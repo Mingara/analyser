@@ -14,6 +14,18 @@
 	$ident = $_SESSION['ident'];
 	$password = $_SESSION['password'];
 	
+	// // Get connection to SQL Server: account of User
+	require_once("classes/Database.php");
+	$conn = (new Database())->dbConnection($ident, $password);
+	$db_conf = (new Database())->gridConnection($ident, $password);
+	//$grid_conf2 = (new Database())->gridConnection($ident, $password);
+
+	
+	if (!empty($_GET["ident"]))
+	{
+		include_once("classes/GridOut.php");
+		exit;
+	}
 
 	$KoolControlsFolder = "../KoolControls";
 	$arrTabs = array();
@@ -45,18 +57,6 @@
 	//error_log("ident: " . $ident . PHP_EOL, 3, "index.log");
 	//error_log("password: " . $password . PHP_EOL, 3, "index.log");
 
-	// // Get connection to SQL Server: account of User
-	require_once("classes/Database.php");
-	$conn = (new Database())->dbConnection($ident, $password);
-	$db_conf = (new Database())->gridConnection($ident, $password);
-	//$grid_conf2 = (new Database())->gridConnection($ident, $password);
-
-	
-	if (!empty($_GET["ident"]))
-	{
-		include_once("classes/GridOut.php");
-		exit;
-	}
 
 
 	// // Get rights of checked User
