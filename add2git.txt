@@ -1,4 +1,4 @@
 git status
 git add .
-git commit -m "тест"
+git commit -m "добавил папку стилей"
 git push origin main
