@@ -120,11 +120,6 @@ label, p {
 font-size: 12px;
 }
 
-legend {
-font-weight: bold;
-font-size: 12px;
-}
-
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
@@ -355,4 +350,23 @@ button:hover {
   color: #FFFF00;
   font-size: 14px;
   flex-shrink: 0; /* Не сжимается и остается справа */
+}
+
+/*
+legend {
+  font-weight:normal;
+  font-size: 12px;
+  }
+*/
+
+fieldset {
+    border: 2px solid #ccc; /* Установи тонкую рамку */
+    padding: 2px; /* Добавь отступы */
+    margin: 2px 0; /* Отступы сверху и снизу */
+}
+
+legend {
+    font-weight: normal; /* Убери жирность текста */
+    color: #000; /* Измени цвет текста, если нужно */
+    font-size: 12px;
 }

@@ -23,6 +23,9 @@
 	
 	if (!empty($_GET["ident"]))
 	{
+		//$gridOut = new GridOut($db_conf, $conn);
+		//$gridOut->processRequest($_GET["ident"]);
+		//$gridOut->render();
 		include_once("classes/GridOut.php");
 		exit;
 	}
@@ -428,8 +431,8 @@
 		einst.set('queryID', arg.ItemId);
 		//alert(einst.get("queryID"));
 
-		alert("sender:" + sender);
-		alert("arg.ItemId : " + arg.ItemId);
+		//alert("sender:" + sender);
+		//alert("arg.ItemId : " + arg.ItemId);
 
 		var modal = document.getElementById("formSettings");
 		modal.style.display = "block";
@@ -445,6 +448,8 @@
 		var d = new Date();
 		var ident = un.innerHTML + "_" + d.getFullYear() + ("0" + (d.getMonth() + 1)).slice(-2) + ("0" + d.getDate()).slice(-2) + ("0" + d.getHours() ).slice(-2) + ("0" + d.getMinutes()).slice(-2) + ("0" + d.getSeconds()).slice(-2);
 
+		//alert("ident=" + ident);
+		
 		einst.set('ident', ident);
 		
 		// Einstellungen: Selected Companies //////////////////////////////////////////////////////////////////////////////////////////////
