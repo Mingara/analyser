@@ -1,4 +1,4 @@
 git status
 git add .
-git commit -m "добавил class Report() - пока не работает"
+git commit -m "добавил class Report() - не работает"
 git push origin main
