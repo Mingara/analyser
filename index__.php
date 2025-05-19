@@ -16,8 +16,6 @@
 	
 	// // Get connection to SQL Server: account of User
 	require_once("classes/Database.php");
-	//include_once("classes/GridOut.php");
-
 	$conn = (new Database())->dbConnection($ident, $password);
 	$db_conf = (new Database())->gridConnection($ident, $password);
 	//$grid_conf2 = (new Database())->gridConnection($ident, $password);
@@ -28,10 +26,6 @@
 		//$gridOut = new GridOut($db_conf, $conn);
 		//$gridOut->processRequest($_GET["ident"]);
 		//$gridOut->render();
-
-		//$grid = new GridOut("gridout.json");
-		//$grid->render();
-
 		include_once("classes/GridOut.php");
 		exit;
 	}
@@ -187,8 +181,6 @@
 	<script src="../../lib/js/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
 	<script src="../../lib/js/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>	
 	<script src="../../lib/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
 
 
 </head>
@@ -516,7 +508,7 @@
 		addCollTab();
 //alert("end");
 		createNewTab();
-		$('#tabs-' + newTabIndex).load('?grid_id=list' + newTabIndex + '&oper=ajaxload&level=1&ident=' + newTabIndex);
+		$('#tabs-' + newTabIndex).load('?grid_id=list' + newTabIndex + '&oper=ajaxload&ident=' + newTabIndex);
 		newTabIndex++;
 
 		var modal = document.getElementById("formSettings");
@@ -696,69 +688,23 @@
     checkOverflow();
   });
 
-	function checkOverflow() {
-		const wrapper = $("#tabsColl-wrapper")[0];
-		const tabs = $("#tabsColl")[0];
-		if (tabs.scrollWidth > wrapper.clientWidth) {
-			$("#scroll-left, #scroll-right").show();
-		} else {
-			$("#scroll-left, #scroll-right").hide();
-		}
-	}
+  function checkOverflow() {
+    const wrapper = $("#tabsColl-wrapper")[0];
+    const tabs = $("#tabsColl")[0];
+    if (tabs.scrollWidth > wrapper.clientWidth) {
+      $("#scroll-left, #scroll-right").show();
+    } else {
+      $("#scroll-left, #scroll-right").hide();
+    }
+  }
 
-	$("#scroll-left").on("click", function () {
-		$("#tabsColl").animate({ scrollLeft: "-=100" }, 200);
-	});
+  $("#scroll-left").on("click", function () {
+    $("#tabsColl").animate({ scrollLeft: "-=100" }, 200);
+  });
 
-	$("#scroll-right").on("click", function () {
-		$("#tabsColl").animate({ scrollLeft: "+=100" }, 200);
-	});
+  $("#scroll-right").on("click", function () {
+    $("#tabsColl").animate({ scrollLeft: "+=100" }, 200);
+  });
 
-	$(window).on("resize", checkOverflow);
-
-	function getPopup() {
-		var grid_id = "list1";
-		$.contextMenu({
-			selector: '#gbox_' + grid_id + ' .jqgrow',
-			appendTo: '.ui-jqgrid',
-			callback: function(key, options) {
-
-				var row = jQuery("#"+grid_id).getGridParam("selrow");
-				var gender = jQuery('#'+grid_id).jqGrid('getCell', row, 'gender');
-
-				var m = "Row:"+ row +", Gender:"+gender+", Clicked:" + key;
-				window.console && console.log(m) || alert(m); 
-			},
-			items: {
-				"edit": {"name": "Edit", "icon": "edit"},
-				"cut": {"name": "Cut", "icon": "cut"},
-				"sep1": "---------",
-				"quit": {"name": "Quit", "icon": "quit"},
-				"sep2": "---------",
-				"fold1": {
-					"name": "Sub group", 
-					"items": {
-						"fold1-key1": {"name": "Foo bar"},
-						"fold2": {
-							"name": "Sub group 2", 
-							"items": {
-								"fold2-key1": {"name": "alpha"},
-								"fold2-key2": {"name": "bravo"},
-								"fold2-key3": {"name": "charlie"}
-							}
-						},
-						"fold1-key3": {"name": "delta"}
-					}
-				},
-				"fold1a": {
-					"name": "Other group", 
-					"items": {
-						"fold1a-key1": {"name": "echo"},
-						"fold1a-key2": {"name": "foxtrot"},
-						"fold1a-key3": {"name": "golf"}
-					}
-				}
-			}
-		});
-	}
+  $(window).on("resize", checkOverflow);
 </script>
