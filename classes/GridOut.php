@@ -51,7 +51,7 @@
 			$opt["readonly"] = true;
 			$opt["resizable"] = false;
 			$opt["autoresize"] = false;
-			//$opt["loadComplete"] = "function(){ getPopup(); }";
+			$opt["loadComplete"] = "function(){ getPopup(); }";
 
 			//$opt["rownumbers"] = true;
 			//$opt["rownumWidth"] = 90;

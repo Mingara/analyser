@@ -75,3 +75,7 @@ level: 1 ident: 1 time: 1747931085.2761 uri: /analyser/index.php?grid_id=list1&o
 level: 1 ident: 1 time: 1747931086.8879 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1&grid_id=list1&_search=false&nd=1747931086872&rows=20&jqgrid_page=1&sidx=1&sord=asc referer: http://localhost/analyser/index.php
 level: 1 ident: 1 time: 1747931422.6182 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1 referer: http://localhost/analyser/index.php
 level: 1 ident: 1 time: 1747931424.2582 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1&grid_id=list1&_search=false&nd=1747931424242&rows=20&jqgrid_page=1&sidx=1&sord=asc referer: http://localhost/analyser/index.php
+level: 1 ident: 1 time: 1747933250.4759 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1 referer: http://localhost/analyser/index.php
+level: 1 ident: 1 time: 1747933251.4558 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1&grid_id=list1&_search=false&nd=1747933251433&rows=20&jqgrid_page=1&sidx=1&sord=asc referer: http://localhost/analyser/index.php
+level: 1 ident: 1 time: 1747934617.8268 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1 referer: http://localhost/analyser/index.php
+level: 1 ident: 1 time: 1747934619.1868 uri: /analyser/index.php?grid_id=list1&oper=ajaxload&level=1&ident=1&grid_id=list1&_search=false&nd=1747934619167&rows=20&jqgrid_page=1&sidx=1&sord=asc referer: http://localhost/analyser/index.php

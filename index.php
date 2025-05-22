@@ -25,8 +25,14 @@
 
 	if (!empty($_GET["ident"]))
 	{
+		/*
 		include_once("classes/GridOut.php");
 		$gridOut = new GridOut($conn, $db_conf);
+		*/
+		// Для вызова класса и рендера:
+include_once("classes/PopupMenu.php");
+$popupMenu = new PopupMenu();
+$popupMenu->render();
 		exit;
 	}
 
