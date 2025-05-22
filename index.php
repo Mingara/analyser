@@ -22,19 +22,14 @@
 	$db_conf = (new Database())->gridConnection($ident, $password);
 	//$grid_conf2 = (new Database())->gridConnection($ident, $password);
 
-	
+
 	if (!empty($_GET["ident"]))
 	{
-		//$gridOut = new GridOut($db_conf, $conn);
-		//$gridOut->processRequest($_GET["ident"]);
-		//$gridOut->render();
-
-		//$grid = new GridOut("gridout.json");
-		//$grid->render();
-
 		include_once("classes/GridOut.php");
+		$gridOut = new GridOut($conn, $db_conf);
 		exit;
 	}
+
 
 	$KoolControlsFolder = "../KoolControls";
 	$arrTabs = array();
@@ -169,26 +164,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!--
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Kufner Web Analyser</title>
 	<link rel="icon" type="image/gif" href="img/kufner.gif">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link rel="stylesheet" type="text/css" href="css/tabsColl.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/tabsColl.css">
 	<script src="js/jquery-3.7.1.min.js"></script>
-
-
 	
 	<link rel="stylesheet" type="text/css" media="screen" href="../../lib/js/themes/redmond/jquery-ui.custom.css"></link>	
-	<!--<link rel="stylesheet" type="text/css" media="screen" href="../../lib/js/themes/redmond/jquery-ui.custom.css"></link>-->
 	<link rel="stylesheet" type="text/css" media="screen" href="../../lib/js/jqgrid/css/ui.jqgrid.css"></link>	
 	<script src="../../lib/js/jquery.min.js" type="text/javascript"></script>
 	<script src="../../lib/js/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
 	<script src="../../lib/js/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>	
 	<script src="../../lib/js/themes/jquery-ui.custom.min.js" type="text/javascript"></script>
+	<script src="js/PopupMenu.js"></script>
+	<script src="js/jquery.ui.position.min.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/jquery.contextMenu.min.css"></link>	
+	<script src="js/jquery.contextMenu.min.js"></script>
+	-->
+	
+	<!--
+	<link rel="stylesheet" type="text/css" media="screen" href="../../lib/js/themes/redmond/jquery-ui.custom.css"></link>
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.min.js"></script>
+	-->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Kufner Web Analyser</title>
+	<link rel="icon" type="image/gif" href="img/kufner.gif">
+
+	<!-- Твои стили -->
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/tabsColl.css">
+
+	<!-- UI + jqGrid стили -->
+	<link rel="stylesheet" type="text/css" href="../../lib/js/themes/redmond/jquery-ui.custom.css">
+	<link rel="stylesheet" type="text/css" href="../../lib/js/jqgrid/css/ui.jqgrid.css">
+
+	<!-- contextMenu стили -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.contextMenu.min.css">
+
+	<!-- jQuery (только ОДНА версия) -->
+	<script src="js/jquery-3.7.1.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script src="../../lib/js/themes/jquery-ui.custom.min.js"></script>
+
+	<!-- jqGrid -->
+	<script src="../../lib/js/jqgrid/js/i18n/grid.locale-en.js"></script>
+	<script src="../../lib/js/jqgrid/js/jquery.jqGrid.min.js"></script>
+
+	<!-- contextMenu зависимости -->
+	<script src="js/jquery.ui.position.min.js"></script>       <!-- обязательно перед contextMenu -->
+	<script src="js/jquery.contextMenu.min.js"></script>       <!-- сам плагин -->
+
+	<!-- Твой класс PopupMenu -->
+	<script src="js/PopupMenu.js"></script>
+
 
 
 </head>
@@ -198,7 +237,7 @@
 
 		<!-- MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU MENU -->
 		<div id="menu">
-			<form id="formMainMenu" method="post">
+			<form id="formMainMenu" style="margin-top: 4px" method="post">
 				<?php echo $mainMenu->Render();?>
 			</form>
 		</div>
@@ -513,10 +552,11 @@
 
 
 //alert("begin");
-		addCollTab();
+		//addCollTab();
 //alert("end");
 		createNewTab();
 		$('#tabs-' + newTabIndex).load('?grid_id=list' + newTabIndex + '&oper=ajaxload&level=1&ident=' + newTabIndex);
+		new PopupMenu("list" + newTabIndex);
 		newTabIndex++;
 
 		var modal = document.getElementById("formSettings");
@@ -683,7 +723,7 @@
     // Устанавливаем активную вкладку
     const index = $(this).parent().index(); // Определяем индекс вкладки
     $("#tabsColl").tabs("option", "active", index); // Устанавливаем активную вкладку
-    //alert(`Событие: click на таб, ID: ${tabId}`);
+    alert(`Событие: click на таб в tabsColl, ID: ${tabId}`);
   });
 
   $(document).on("click", ".close-tab", function (event) {

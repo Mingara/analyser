@@ -1,4 +1,4 @@
 git status
 git add .
-git commit -m "добавил class Report() - не работает"
+git commit -m "перед проработки GridOut или возможным превращением GridOut в класс"
 git push origin main

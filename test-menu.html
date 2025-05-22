@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Context Menu</title>
+
+	<link rel="stylesheet" href="css/jquery.contextMenu.min.css">
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script src="js/jquery.ui.position.min.js"></script>
+	<script src="js/jquery.contextMenu.min.js"></script>
+</head>
+<body>
+
+	<div id="target" style="padding: 50px; border: 1px solid black;">
+		Right-click here
+	</div>
+
+	<script>
+		console.log("jQuery:", typeof jQuery);                    // must be function
+		console.log("contextMenu:", typeof $.contextMenu);       // must be function
+
+		$.contextMenu({
+			selector: '#target',
+			callback: function(key, options) {
+				alert('clicked: ' + key);
+			},
+			items: {
+				"edit": {name: "Edit", icon: "edit"},
+				"cut": {name: "Cut", icon: "cut"},
+				"copy": {name: "Copy", icon: "copy"},
+				"paste": {name: "Paste", icon: "paste"},
+				"delete": {name: "Delete", icon: "delete"},
+				"sep1": "---------",
+				"quit": {name: "Quit", icon: "quit"}
+			}
+		});
+	</script>
+
+</body>
+</html>
